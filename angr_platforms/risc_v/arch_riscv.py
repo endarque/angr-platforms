@@ -29,7 +29,7 @@ class ArchRISCV(Arch):
     qemu_name = None  # No Unicorn-engine support
     ida_processor = None
     triplet = 'riscv64-linux-gnu'
-    max_inst_bytes = 4
+    max_inst_bytes = 8
 
     ip_offset = 128  # ip(pc)
     sp_offset = 8  # sp(x2)
