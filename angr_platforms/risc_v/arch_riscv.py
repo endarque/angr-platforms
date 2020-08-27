@@ -22,13 +22,13 @@ class ArchRISCV(Arch):
 
     sizeof = {'short': 16, 'int': 32, 'long': 32, 'long long': 64}
 
-    bits = 32
+    bits = 64
     name = 'RISCV'
 
     vex_arch = None  # No VEX support
     qemu_name = None  # No Unicorn-engine support
     ida_processor = None
-    triplet = 'riscv32-linux-gnu'
+    triplet = 'riscv64-linux-gnu'
     max_inst_bytes = 4
 
     ip_offset = 128  # ip(pc)
