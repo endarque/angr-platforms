@@ -1,4 +1,4 @@
-from .arch_riscv import ArchRISCV
+from .arch_riscv import ArchRISCV64
 from . import instrs_riscv as instrs
 from pyvex.lifting import register
 from pyvex.lifting.util import GymratLifter
