@@ -16,7 +16,7 @@ class ArchRISCV64(Arch):
     def __init__(self, endness=Endness.LE):
         if endness != Endness.LE:
             raise ArchError('Arch RISCV must be little endian')
-        super(ArchRISCV, self).__init__(endness)
+        super(ArchRISCV64, self).__init__(endness)
         self.call_pushes_ret = False
         self.branch_delay_slot = False
 
@@ -31,13 +31,13 @@ class ArchRISCV64(Arch):
     triplet = 'riscv64-linux-gnu'
     max_inst_bytes = 8
 
-    ip_offset = 128  # ip(pc)
-    sp_offset = 8  # sp(x2)
-    bp_offset = 8  # bp(x2)
-    lr_offset = 4  # lr(x1)
-    ret_offset = 40  # a0(x10) For return value
+    ip_offset = 256  # ip(pc)
+    sp_offset = 16  # sp(x2)
+    bp_offset = 16  # bp(x2)
+    lr_offset = 8  # lr(x1)
+    ret_offset = 80  # a0(x10) For return value
 
-    syscall_num_offset = 68
+    syscall_num_offset = 136
     # a7(x17) For syscall number
     # According To
     # http://www.cs.uwm.edu/classes/cs315/Bacon/Lecture/HTML/ch05s03.html
@@ -51,7 +51,7 @@ class ArchRISCV64(Arch):
 
     if _capstone:
         cs_arch = _capstone.CS_ARCH_RISCV
-        cs_mode = _capstone.CS_MODE_RISCV32
+        cs_mode = _capstone.CS_MODE_RISCV64
 
 
     # TODO: Currently keystone, unicorn DON'T support RISC-V
@@ -65,8 +65,8 @@ class ArchRISCV64(Arch):
     #     uc_prefix = 'UC_ALL_'
 
     instruction_endness = Endness.LE
-    max_inst_bytes = 4
-    instruction_alignment = 4
+    max_inst_bytes = 8
+    instruction_alignment = 8
     persistent_regs = []
     function_prologs = {
         br'[\x00-\xff][\x00-\xf1]\x01\x13',
