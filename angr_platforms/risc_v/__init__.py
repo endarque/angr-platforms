@@ -1,4 +1,4 @@
-from .arch_riscv import ArchRISCV
-from .lift_riscv import LifterRISCV32
+from .arch_riscv import ArchRISCV64
+from .lift_riscv import LifterRISCV64
 from .simos_riscv import SimCCRISCV, SimRISCVSyscall
 
