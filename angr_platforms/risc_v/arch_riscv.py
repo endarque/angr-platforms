@@ -50,7 +50,7 @@ class ArchRISCV64(Arch):
     sizeof = {'short': 16, 'int': 32, 'long': 32, 'long long': 64}
 
     if _capstone:
-        cs_arch = _capstone.CS_ARCH_RISCV
+        cs_arch = _capstone.CS_ARCH_RISCV64
         cs_mode = _capstone.CS_MODE_RISCV64
 
 
